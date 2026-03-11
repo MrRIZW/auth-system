@@ -4,11 +4,24 @@ export default function Dashboard(){
 
 return(
 
-<div style={{padding:"40px"}}>
+<div className="dashboard">
 
-<h1>Dashboard</h1>
+<h1>Authentication System</h1>
 
-<p>Protected Page</p>
+<div className="card">
+<h3>User Profile</h3>
+<p>Status: Logged In</p>
+</div>
+
+<div className="card">
+<h3>Security</h3>
+<p>JWT Active</p>
+</div>
+
+<div className="card">
+<h3>Role</h3>
+<p>User / Admin</p>
+</div>
 
 </div>
 
