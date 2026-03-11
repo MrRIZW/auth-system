@@ -5,32 +5,14 @@ const jwt = require("jsonwebtoken");
 
 const { register, login } = require("../controllers/authController");
 
-/* ---------------------------
-   REGISTER
-----------------------------*/
-
 router.post("/register", register);
 
-/* ---------------------------
-   LOGIN
-----------------------------*/
-
 router.post("/login", login);
-
-
-/* ---------------------------
-   GOOGLE AUTH
-----------------------------*/
 
 router.get(
   "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
-
-
-/* ---------------------------
-   GOOGLE CALLBACK
-----------------------------*/
 
 router.get(
   "/google/callback",
@@ -67,10 +49,6 @@ router.get(
   }
 );
 
-
-/* ---------------------------
-   REFRESH TOKEN
-----------------------------*/
 
 router.post("/refresh", async (req, res) => {
 
@@ -112,10 +90,6 @@ router.post("/refresh", async (req, res) => {
   }
 });
 
-
-/* ---------------------------
-   LOGOUT
-----------------------------*/
 
 router.post("/logout", (req, res) => {
 

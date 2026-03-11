@@ -11,14 +11,8 @@ require("./config/passport");
 
 const app = express();
 
-/* ---------------------------
-   MIDDLEWARE
-----------------------------*/
-
-// Parse JSON
 app.use(express.json());
 
-// CORS (React frontend)
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -26,10 +20,8 @@ app.use(
   })
 );
 
-// Cookie parser
 app.use(cookieParser());
 
-// Session for Passport
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "secret",
@@ -43,14 +35,8 @@ app.use(
   })
 );
 
-// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-/* ---------------------------
-   DATABASE CONNECTION
-----------------------------*/
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -62,26 +48,11 @@ mongoose
   });
 
 
-/* ---------------------------
-   ROUTES
-----------------------------*/
-
-// Authentication Routes
 app.use("/api/auth", require("./routes/authRoutes"));
-
-
-/* ---------------------------
-   TEST ROUTE
-----------------------------*/
 
 app.get("/", (req, res) => {
   res.send("Authentication API Running");
 });
-
-
-/* ---------------------------
-   SERVER START
-----------------------------*/
 
 const PORT = process.env.PORT || 5000;
 
